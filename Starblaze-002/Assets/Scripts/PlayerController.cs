@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
     public float knockbackLength, knockbackForce;
     private float knockbackCounter;
 
+
     private void Awake()
     {
         instance = this;
@@ -41,6 +42,8 @@ public class PlayerController : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         theSR = GetComponent<SpriteRenderer>();
+
+        
     }
 
     void Update()

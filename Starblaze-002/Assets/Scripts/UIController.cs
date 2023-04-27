@@ -28,6 +28,7 @@ public class UIController : MonoBehaviour
 
     public void UpdateHealthDisplay()
     {
+        
         switch(PlayerHealthController.instance.currentHealth)
         {
             case 2:

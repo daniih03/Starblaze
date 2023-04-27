@@ -8,13 +8,20 @@ public class Checkpoint : MonoBehaviour
 
     public Sprite cpOn, cpOff;
 
-    void Start()
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        
+        if(other.CompareTag("Player"))
+        {
+            CheckpointController.instance.DeactivateCheckpoints();
+            theSR.sprite = cpOn;
+
+            CheckpointController.instance.SetSpawnPoint(transform.position);
+        }
     }
 
-    void Update()
+    public void ResetCheckpoint()
     {
-        
+        theSR.sprite = cpOff;
     }
+
 }
