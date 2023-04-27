@@ -83,18 +83,20 @@ public class PlayerController : MonoBehaviour
                 theSR.flipX = false;
             }
         }
-        else
+        else if (knockbackCounter >= 0)
         {
             knockbackCounter -= Time.deltaTime;
             if(!theSR.flipX)
             {
+                 
                 theRB.velocity = new Vector2(-knockbackForce, theRB.velocity.y);
             }
             else
             {
+                
                 theRB.velocity = new Vector2(knockbackForce, theRB.velocity.y);
             }
-        }
+        } else theRB.velocity = new Vector2(0, 0);
 
         anim.SetFloat("moveSpeed", Mathf.Abs(theRB.velocity.x));
         anim.SetBool("isGrounded", isGrounded);

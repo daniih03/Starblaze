@@ -38,8 +38,11 @@ public class LevelManager : MonoBehaviour
     {
         //PlayerController.instance.gameObject.SetActive(false);
         PlayerController.instance.Knockback();
+        
         PlayerController.instance.anim.SetBool("Dead", true);
+
         yield return new WaitForSeconds(waitToRespawn);
+       PlayerController.instance.theRB.velocity =new Vector2(0.0f , 0.0f); 
        
         //PlayerController.instance.gameObject.SetActive(true);
         PlayerController.instance.anim.SetBool("Dead", false);
