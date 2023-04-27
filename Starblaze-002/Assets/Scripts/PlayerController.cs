@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if(knockbackCounter <= 0)
+        if(knockbackCounter <= 0 && !anim.GetBool("Dead"))
         {
             theRB.velocity = new Vector2(moveSpeed * Input.GetAxisRaw("Horizontal"), theRB.velocity.y);
 
