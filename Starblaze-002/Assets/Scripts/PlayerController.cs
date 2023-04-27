@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
     public GameObject Bullet;
     private float cd;
 
-    public float knockbackLength, knockbackForce;
+    public float knockbackLength, knockbackForceY, knockbackForceX;
     private float knockbackCounter;
 
     private void Awake()
@@ -97,7 +97,14 @@ public class PlayerController : MonoBehaviour
     public void Knockback()
     {
         knockbackCounter = knockbackLength;
-        theRB.velocity = new Vector2(0f, knockbackForce);
+        if(theSR.flipX)
+        {
+            theRB.velocity = new Vector2(knockbackForceX * +1, knockbackForceY);
+        }
+        else if(!theSR.flipX)
+        {
+            theRB.velocity = new Vector2(knockbackForceX * -1, knockbackForceY);
+        }
     }
 
     private void shoot()
