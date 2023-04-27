@@ -43,6 +43,7 @@ public class PlayerHealthController : MonoBehaviour
         if(invincibleCounter <= 0)
         {
             currentHealth--;
+            PlayerController.instance.anim.SetTrigger("hurt");
 
             if(currentHealth <= 0)
             {

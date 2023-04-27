@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D theRB;
 
     [Header("Animator")]
-    private Animator anim;
+    public Animator anim;
     private SpriteRenderer theSR;
 
     [Header("Grounded")]
@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
     public GameObject Bullet;
     private float cd;
 
-    public float knockbackLength, knockbackForceY, knockbackForceX;
+    public float knockbackLength, knockbackForce;
     private float knockbackCounter;
 
     private void Awake()
@@ -74,7 +74,8 @@ public class PlayerController : MonoBehaviour
             if(theRB.velocity.x < 0)
             {
                 theSR.flipX = true;
-            } else if(theRB.velocity.x > 0)
+            }
+            else if(theRB.velocity.x > 0)
             {
                 theSR.flipX = false;
             }
@@ -82,6 +83,14 @@ public class PlayerController : MonoBehaviour
         else
         {
             knockbackCounter -= Time.deltaTime;
+            if(!theSR.flipX)
+            {
+                theRB.velocity = new Vector2(-knockbackForce, theRB.velocity.y);
+            }
+            else
+            {
+                theRB.velocity = new Vector2(knockbackForce, theRB.velocity.y);
+            }
         }
 
         anim.SetFloat("moveSpeed", Mathf.Abs(theRB.velocity.x));
@@ -97,14 +106,7 @@ public class PlayerController : MonoBehaviour
     public void Knockback()
     {
         knockbackCounter = knockbackLength;
-        if(theSR.flipX)
-        {
-            theRB.velocity = new Vector2(knockbackForceX * +1, knockbackForceY);
-        }
-        else if(!theSR.flipX)
-        {
-            theRB.velocity = new Vector2(knockbackForceX * -1, knockbackForceY);
-        }
+        theRB.velocity = new Vector2(0f, knockbackForce);
     }
 
     private void shoot()
