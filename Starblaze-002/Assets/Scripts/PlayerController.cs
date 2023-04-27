@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController instance;
+
     [Header("Movimiento")]
     public float moveSpeed;
 
@@ -27,6 +29,14 @@ public class PlayerController : MonoBehaviour
     public GameObject Bullet;
     private float cd;
 
+    public float knockbackLength, knockbackForce;
+    private float knockbackCounter;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -35,36 +45,43 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        theRB.velocity = new Vector2(moveSpeed * Input.GetAxisRaw("Horizontal"), theRB.velocity.y);
-
-        isGrounded = Physics2D.OverlapCircle(groundCheckpoint.position, 0.2f, whatIsGround);
-
-        if(isGrounded)
+        if(knockbackCounter <= 0)
         {
-            canDoubleJump = true;
-        }
+            theRB.velocity = new Vector2(moveSpeed * Input.GetAxisRaw("Horizontal"), theRB.velocity.y);
 
-        if(Input.GetButtonDown("Jump"))
-        {
+            isGrounded = Physics2D.OverlapCircle(groundCheckpoint.position, 0.2f, whatIsGround);
+
             if(isGrounded)
             {
-                theRB.velocity = new Vector2(theRB.velocity.x, jumpForce);
-            } else
+                canDoubleJump = true;
+            }
+
+            if(Input.GetButtonDown("Jump"))
             {
-                if(canDoubleJump)
+                if(isGrounded)
                 {
                     theRB.velocity = new Vector2(theRB.velocity.x, jumpForce);
-                    canDoubleJump = false;
+                } else
+                {
+                    if(canDoubleJump)
+                    {
+                        theRB.velocity = new Vector2(theRB.velocity.x, jumpForce);
+                        canDoubleJump = false;
+                    }
                 }
             }
-        }
 
-        if(theRB.velocity.x < 0)
+            if(theRB.velocity.x < 0)
+            {
+                theSR.flipX = true;
+            } else if(theRB.velocity.x > 0)
+            {
+                theSR.flipX = false;
+            }
+        }
+        else
         {
-            theSR.flipX = true;
-        } else if(theRB.velocity.x > 0)
-        {
-            theSR.flipX = false;
+            knockbackCounter -= Time.deltaTime;
         }
 
         anim.SetFloat("moveSpeed", Mathf.Abs(theRB.velocity.x));
@@ -75,6 +92,12 @@ public class PlayerController : MonoBehaviour
             shoot();
             cd = Time.time;
         }
+    }
+
+    public void Knockback()
+    {
+        knockbackCounter = knockbackLength;
+        theRB.velocity = new Vector2(0f, knockbackForce);
     }
 
     private void shoot()

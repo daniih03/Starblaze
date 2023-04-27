@@ -42,6 +42,10 @@ public class UIController : MonoBehaviour
                 HealthBar1.sprite = emptyBar;
                 HealthBar2.sprite = emptyBar;
                 break;
+            default:
+                HealthBar1.sprite = emptyBar;
+                HealthBar2.sprite = emptyBar;
+                break;
         }
     }
 }
