@@ -9,9 +9,11 @@ public class BulletScript : MonoBehaviour
     private Vector2 Direction;
     private SpriteRenderer theSR;
 
+    private Animator anim;
     void Start()
     {
         Rigidbody2D = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -30,6 +32,8 @@ public class BulletScript : MonoBehaviour
         {
             transform.localScale = new Vector3(-1, 1, 1);
         }
+
+    
     }
 
     public void SetDirection(Vector2 direction)
@@ -44,6 +48,6 @@ public class BulletScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.collider.CompareTag("Hit")) Destroy(gameObject);
+        if(other.collider.CompareTag("Ground")) anim.SetBool("Impact", true);
     }
 }
