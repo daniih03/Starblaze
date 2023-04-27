@@ -4298,6 +4298,14 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 370649879724579881, guid: 1af4b039d3ca6f14f9c5f040a8d4e47a, type: 3}
+      propertyPath: knockbackForceX
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 370649879724579881, guid: 1af4b039d3ca6f14f9c5f040a8d4e47a, type: 3}
+      propertyPath: knockbackForceY
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 370649879724579881, guid: 1af4b039d3ca6f14f9c5f040a8d4e47a, type: 3}
       propertyPath: knockbackLength
       value: 0.35
       objectReference: {fileID: 0}
