@@ -49,7 +49,7 @@ public class PlayerHealthController : MonoBehaviour
             {
                 currentHealth = 0;
 
-                LevelManager.instance.RespawnPlayer();
+                LevelManager.instance.RespawnPlayerD();
             }
             else
             {

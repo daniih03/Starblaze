@@ -26,15 +26,23 @@ public class LevelManager : MonoBehaviour
         
     }
     
-    public void RespawnPlayer()
+    public void RespawnPlayerD()
     {
-        StartCoroutine(RespawnCo());
+        StartCoroutine(RespawnCoD());
        
        
                 
     }
 
-    IEnumerator RespawnCo()
+    public void RespawnPlayerF()
+    {
+        StartCoroutine(RespawnCoF());
+       
+       
+                
+    }
+
+    IEnumerator RespawnCoD()
     {
         //PlayerController.instance.gameObject.SetActive(false);
         PlayerController.instance.Knockback();
@@ -42,9 +50,26 @@ public class LevelManager : MonoBehaviour
         PlayerController.instance.anim.SetBool("Dead", true);
 
         yield return new WaitForSeconds(waitToRespawn);
-       PlayerController.instance.theRB.velocity =new Vector2(0.0f , 0.0f); 
        
         //PlayerController.instance.gameObject.SetActive(true);
+        PlayerController.instance.anim.SetBool("Dead", false);
+
+        PlayerController.instance.transform.position = CheckpointController.instance.spawnPoint;
+
+        PlayerHealthController.instance.currentHealth = PlayerHealthController.instance.maxHealth;
+
+         UIController.instance.UpdateHealthDisplay();
+    }
+         IEnumerator RespawnCoF()
+    {
+        PlayerController.instance.gameObject.SetActive(false);
+        
+        PlayerController.instance.anim.SetBool("Dead", true);
+
+        yield return new WaitForSeconds(waitToRespawn);
+       
+        PlayerController.instance.gameObject.SetActive(true);
+
         PlayerController.instance.anim.SetBool("Dead", false);
 
         PlayerController.instance.transform.position = CheckpointController.instance.spawnPoint;
@@ -57,3 +82,4 @@ public class LevelManager : MonoBehaviour
     }
 
 }
+
