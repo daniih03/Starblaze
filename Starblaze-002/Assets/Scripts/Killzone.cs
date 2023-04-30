@@ -9,6 +9,7 @@ public class Killzone : MonoBehaviour
         if(other.tag == "Player")
         {
             LevelManager.instance.RespawnPlayerF();
+
         }
     }
  
