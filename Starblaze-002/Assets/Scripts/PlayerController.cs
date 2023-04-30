@@ -96,7 +96,7 @@ public class PlayerController : MonoBehaviour
                 
                 theRB.velocity = new Vector2(knockbackForce, theRB.velocity.y);
             }
-        } else theRB.velocity = new Vector2(0, 0);
+        } else theRB.velocity = new Vector2(0, theRB.velocity.y);
 
         anim.SetFloat("moveSpeed", Mathf.Abs(theRB.velocity.x));
         anim.SetBool("isGrounded", isGrounded);

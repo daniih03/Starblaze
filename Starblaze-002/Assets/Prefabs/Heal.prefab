@@ -137,3 +137,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGem: 0
   isHeal: 1
+  collectible: {fileID: 5164498123687486910, guid: db11631247866794794c905fef65187c, type: 3}
