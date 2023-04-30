@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIController : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class UIController : MonoBehaviour
 
     public Sprite fullBar, emptyBar;
 
+    public TextMeshProUGUI gemText;
+
     private void Awake()
     {
         instance = this;
@@ -18,7 +21,7 @@ public class UIController : MonoBehaviour
 
     void Start()
     {
-        
+        UpdateGemCount();
     }
 
     void Update()
@@ -48,5 +51,11 @@ public class UIController : MonoBehaviour
                 HealthBar2.sprite = emptyBar;
                 break;
         }
+    }
+
+    public void UpdateGemCount()
+    
+    {
+        gemText.text = LevelManager.instance.gemsCollected.ToString();
     }
 }
