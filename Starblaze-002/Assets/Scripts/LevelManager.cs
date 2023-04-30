@@ -11,6 +11,8 @@ public class LevelManager : MonoBehaviour
 
     public Animator anim;
 
+    public int gemsCollected;
+
    private void Awake()
    {
     instance=this;
