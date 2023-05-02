@@ -52,8 +52,12 @@ public class LevelManager : MonoBehaviour
         PlayerController.instance.anim.SetBool("Dead", true);
         AudioManager.instance.PlaySFX(3);
 
-        yield return new WaitForSeconds(waitToRespawn);
-       
+        yield return new WaitForSeconds(waitToRespawn - (1f / UIController.instance.fadeSpeed));
+        UIController.instance.FadeToBlack();
+
+         yield return new WaitForSeconds((1f / UIController.instance.fadeSpeed) + 0.2f);
+
+         UIController.instance.FadeFromBlack();
         //PlayerController.instance.gameObject.SetActive(true);
         PlayerController.instance.anim.SetBool("Dead", false);
 
@@ -69,8 +73,12 @@ public class LevelManager : MonoBehaviour
         
         PlayerController.instance.anim.SetBool("Dead", true);
         AudioManager.instance.PlaySFX(3);
+        
+        yield return new WaitForSeconds(waitToRespawn - (1f / UIController.instance.fadeSpeed));
+        UIController.instance.FadeToBlack();
 
-        yield return new WaitForSeconds(waitToRespawn);
+         yield return new WaitForSeconds((1f / UIController.instance.fadeSpeed) + 0.2f);
+
        
         PlayerController.instance.gameObject.SetActive(true);
 

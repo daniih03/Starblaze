@@ -34,6 +34,8 @@ public class PlayerController : MonoBehaviour
 
     public GameObject Heal;
 
+    private CapsuleCollider2D theCC;
+
 
     private void Awake()
     {
@@ -44,13 +46,16 @@ public class PlayerController : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         theSR = GetComponent<SpriteRenderer>();
+        theCC = GetComponent<CapsuleCollider2D>();
 
         
     }
 
     void Update()
     {
-        if(knockbackCounter <= 0 && !anim.GetBool("Dead"))
+        if(!PauseMenu.instance.isPaused)
+        {
+             if(knockbackCounter <= 0 && !anim.GetBool("Dead"))
         {
             theRB.velocity = new Vector2(moveSpeed * Input.GetAxisRaw("Horizontal"), theRB.velocity.y);
 
@@ -101,6 +106,8 @@ public class PlayerController : MonoBehaviour
                 theRB.velocity = new Vector2(knockbackForce, theRB.velocity.y);
             }
         } else theRB.velocity = new Vector2(0, theRB.velocity.y);
+        }
+       
 
         anim.SetFloat("moveSpeed", Mathf.Abs(theRB.velocity.x));
         anim.SetBool("isGrounded", isGrounded);
@@ -110,6 +117,11 @@ public class PlayerController : MonoBehaviour
             shoot();
             cd = Time.time;
         }
+
+        if(anim.GetBool("Dead"))
+        {
+            theCC.size = new Vector2(0.36f, 0.6684647f);
+        } else theCC.size = new Vector2(0.6684647f, 0.9640899f);
     }
 
     public void Knockback()

@@ -14,6 +14,10 @@ public class UIController : MonoBehaviour
 
     public TextMeshProUGUI gemText;
 
+    public Image FadeScreen;
+    public float fadeSpeed;
+    public bool ShouldFadeToBlack, ShouldFadeFromBlack;
+
     private void Awake()
     {
         instance = this;
@@ -22,11 +26,29 @@ public class UIController : MonoBehaviour
     void Start()
     {
         UpdateGemCount();
+        FadeFromBlack();
+    
     }
 
     void Update()
     {
-        
+        if(ShouldFadeToBlack)
+        {
+            FadeScreen.color = new Color(FadeScreen.color.r, FadeScreen.color.g, FadeScreen.color.b, Mathf.MoveTowards(FadeScreen.color.a, 1f, fadeSpeed * Time.deltaTime));
+            if(FadeScreen.color.a == 1f)
+            {
+                ShouldFadeToBlack = false;
+            }
+        } 
+
+        if(ShouldFadeFromBlack)
+        {
+            FadeScreen.color = new Color(FadeScreen.color.r, FadeScreen.color.g, FadeScreen.color.b, Mathf.MoveTowards(FadeScreen.color.a, 0f, fadeSpeed * Time.deltaTime));
+            if(FadeScreen.color.a == 0f)
+            {
+                ShouldFadeFromBlack = false;
+            }
+        } 
     }
 
     public void UpdateHealthDisplay()
@@ -57,5 +79,16 @@ public class UIController : MonoBehaviour
     
     {
         gemText.text = LevelManager.instance.gemsCollected.ToString();
+    }
+
+    public void FadeToBlack()
+    {
+        ShouldFadeToBlack = true;
+        ShouldFadeFromBlack = false;
+    }
+    public void FadeFromBlack()
+    {
+        ShouldFadeToBlack = false;
+        ShouldFadeFromBlack = true;
     }
 }
