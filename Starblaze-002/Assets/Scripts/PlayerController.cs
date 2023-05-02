@@ -101,7 +101,7 @@ public class PlayerController : MonoBehaviour
         anim.SetFloat("moveSpeed", Mathf.Abs(theRB.velocity.x));
         anim.SetBool("isGrounded", isGrounded);
 
-        if(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button0) && Time.time > cd + 0.75f)
+        if(Input.GetKeyDown(KeyCode.Space) || Input.GetButton("Fire1") && Time.time > cd + 0.75f)
         {
             shoot();
             cd = Time.time;
