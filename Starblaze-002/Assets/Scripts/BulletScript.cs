@@ -9,6 +9,8 @@ public class BulletScript : MonoBehaviour
     private Vector2 Direction;
     private SpriteRenderer theSR;
 
+    private float speed;
+
     private Animator anim;
     void Start()
     {
@@ -18,12 +20,12 @@ public class BulletScript : MonoBehaviour
 
     void Update()
     {
-
+        speed = Speed;
     }
 
     private void FixedUpdate()
     {
-        Rigidbody2D.velocity = Direction * Speed;
+        Rigidbody2D.velocity = Direction * speed;
         if(Direction.x > 0)
         {
             transform.localScale = new Vector3(1, 1, 1);
@@ -49,13 +51,15 @@ public class BulletScript : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other)
     {
         if(other.collider.CompareTag("Ground")) anim.SetBool("Impact", true);
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if(other.tag == "Enemy")
+        else if (other.collider.CompareTag("Enemy")) 
         {
-            Debug.Log(("Hit"));
+            Destroy(gameObject);
+            anim.SetBool("Impact", true);
         }
-    }
+    } 
+
+    
+    
+        
+    
 }

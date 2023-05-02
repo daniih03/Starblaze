@@ -32,6 +32,8 @@ public class PlayerController : MonoBehaviour
     public float knockbackLength, knockbackForce;
     private float knockbackCounter;
 
+    public GameObject Heal;
+
 
     private void Awake()
     {
@@ -130,4 +132,5 @@ public class PlayerController : MonoBehaviour
             bullet.GetComponent<BulletScript>().SetDirection(direction);
         }
     }
+
 }

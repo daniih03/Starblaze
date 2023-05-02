@@ -10,6 +10,12 @@ public class EnemyController : MonoBehaviour
     private Rigidbody2D theRB;
     public SpriteRenderer theSR;
 
+    public GameObject exp;
+
+    public float ChancetoDrop;
+    public GameObject Collectible;
+
+
     void Start()
     {
         theRB = GetComponent<Rigidbody2D>();
@@ -41,6 +47,22 @@ public class EnemyController : MonoBehaviour
             {
                 movingRight = true;
             }
+        }
+    }
+
+    public void OnCollisionEnter2D(Collision2D other)
+    {
+        if(other.collider.CompareTag("proyectile"))
+        {
+            Instantiate(exp, transform.position, Quaternion.identity);
+
+            float dropSelect = Random.Range(0,100);
+            if(dropSelect <= ChancetoDrop && PlayerHealthController.instance.currentHealth <PlayerHealthController.instance.maxHealth)
+            {
+                Instantiate(Collectible, transform.position, Quaternion.identity);
+            }
+
+            Destroy(gameObject);
         }
     }
 }
