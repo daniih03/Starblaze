@@ -50,6 +50,7 @@ public class LevelManager : MonoBehaviour
         PlayerController.instance.Knockback();
         
         PlayerController.instance.anim.SetBool("Dead", true);
+        AudioManager.instance.PlaySFX(3);
 
         yield return new WaitForSeconds(waitToRespawn);
        
@@ -67,6 +68,7 @@ public class LevelManager : MonoBehaviour
         PlayerController.instance.gameObject.SetActive(false);
         
         PlayerController.instance.anim.SetBool("Dead", true);
+        AudioManager.instance.PlaySFX(3);
 
         yield return new WaitForSeconds(waitToRespawn);
        

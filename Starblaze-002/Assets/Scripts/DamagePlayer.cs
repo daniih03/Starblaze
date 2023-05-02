@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DamagePlayer : MonoBehaviour
+
 {
+    
     void Start()
     {
         
@@ -16,16 +18,18 @@ public class DamagePlayer : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag == "Player")
+        if(other.tag == "Player" && !PlayerController.instance.anim.GetBool("Dead"))
         {
+           
             PlayerHealthController.instance.DealDamage();
         }
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.collider.CompareTag("Player"))
+        if(other.collider.CompareTag("Player") && !PlayerController.instance.anim.GetBool("Dead"))
         {
+           
             PlayerHealthController.instance.DealDamage();
         }
     }

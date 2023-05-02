@@ -16,6 +16,7 @@ public class Pickup : MonoBehaviour
     {
         if(isGem)
         {
+            AudioManager.instance.PlaySFX(0);
             LevelManager.instance.gemsCollected++;
             UIController.instance.UpdateGemCount();
 
@@ -28,6 +29,7 @@ public class Pickup : MonoBehaviour
         {
           if(PlayerHealthController.instance.currentHealth < PlayerHealthController.instance.maxHealth)
           {
+            AudioManager.instance.PlaySFX(1);
             PlayerHealthController.instance.HealPlayer();
 
             Instantiate(collectible, transform.position, transform.rotation);

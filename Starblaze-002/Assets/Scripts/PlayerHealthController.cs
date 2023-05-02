@@ -9,7 +9,7 @@ public class PlayerHealthController : MonoBehaviour
     public int currentHealth, maxHealth;
 
     public float invincibleLength;
-    private float invincibleCounter;
+    public float invincibleCounter;
 
     private SpriteRenderer theSR;
 
@@ -42,13 +42,14 @@ public class PlayerHealthController : MonoBehaviour
     {
         if(invincibleCounter <= 0)
         {
+            AudioManager.instance.PlaySFX(4);
             currentHealth--;
             PlayerController.instance.anim.SetTrigger("hurt");
 
             if(currentHealth <= 0)
             {
                 currentHealth = 0;
-
+                invincibleCounter = 0;
                 LevelManager.instance.RespawnPlayerD();
             }
             else

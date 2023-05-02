@@ -65,11 +65,13 @@ public class PlayerController : MonoBehaviour
             {
                 if(isGrounded)
                 {
+                    AudioManager.instance.PlaySFX(2);
                     theRB.velocity = new Vector2(theRB.velocity.x, jumpForce);
                 } else
                 {
                     if(canDoubleJump)
                     {
+                        AudioManager.instance.PlaySFX(2);
                         theRB.velocity = new Vector2(theRB.velocity.x, jumpForce);
                         canDoubleJump = false;
                     }
@@ -118,6 +120,7 @@ public class PlayerController : MonoBehaviour
 
     private void shoot()
     {
+        AudioManager.instance.PlaySFX(5);
         Vector3 direction;
         if(!theSR.flipX)
         {
