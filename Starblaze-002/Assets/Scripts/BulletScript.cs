@@ -50,4 +50,12 @@ public class BulletScript : MonoBehaviour
     {
         if(other.collider.CompareTag("Ground")) anim.SetBool("Impact", true);
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.tag == "Enemy")
+        {
+            Debug.Log(("Hit"));
+        }
+    }
 }
