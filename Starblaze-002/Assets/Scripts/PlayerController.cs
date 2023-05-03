@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Proyectiles")]
     public GameObject Bullet;
+    public GameObject ShootFX;
     private float cd;
 
     public float knockbackLength, knockbackForce;
@@ -121,7 +122,12 @@ public class PlayerController : MonoBehaviour
         if(anim.GetBool("Dead"))
         {
             theCC.size = new Vector2(0.36f, 0.6684647f);
-        } else theCC.size = new Vector2(0.6684647f, 0.9640899f);
+            
+        } else
+        {
+            theCC.size = new Vector2(0.6684647f, 0.9640899f);
+           
+        } 
     }
 
     public void Knockback()
@@ -139,12 +145,14 @@ public class PlayerController : MonoBehaviour
             direction = Vector2.right;
             GameObject bullet = Instantiate(Bullet, new Vector3(transform.position.x + 1 * 0.725f, transform.position.y - 0.2f, transform.position.z), Quaternion.identity);
             bullet.GetComponent<BulletScript>().SetDirection(direction);
+            Instantiate(ShootFX, new Vector3(transform.position.x + 1 * 0.725f, transform.position.y - 0.15f, transform.position.z), Quaternion.identity);
         }
         else if(theSR.flipX)
         {
             direction = Vector2.left;
             GameObject bullet = Instantiate(Bullet, new Vector3(transform.position.x - 1 * 0.725f, transform.position.y - 0.2f, transform.position.z), Quaternion.identity);
             bullet.GetComponent<BulletScript>().SetDirection(direction);
+            Instantiate(ShootFX, new Vector3(transform.position.x - 1 * 0.725f, transform.position.y - 0.15f, transform.position.z), Quaternion.identity);
         }
     }
 

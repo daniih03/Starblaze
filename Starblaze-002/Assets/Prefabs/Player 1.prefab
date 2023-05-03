@@ -148,8 +148,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   Bullet: {fileID: 673093506802814786, guid: ab4832a217a6c934883a7c1a9e69d1ad, type: 3}
+  ShootFX: {fileID: 218318439934762474, guid: fedb1721d4fe9d345a79bc449f53e795, type: 3}
   knockbackLength: 0.35
   knockbackForce: 7.5
+  Heal: {fileID: 0}
 --- !u!95 &4957109171358249305
 Animator:
   serializedVersion: 5
@@ -185,6 +187,7 @@ MonoBehaviour:
   currentHealth: 0
   maxHealth: 2
   invincibleLength: 0.75
+  invincibleCounter: 0
 --- !u!1 &4957109171888846816
 GameObject:
   m_ObjectHideFlags: 0

@@ -78,7 +78,8 @@ public class LevelManager : MonoBehaviour
         UIController.instance.FadeToBlack();
 
          yield return new WaitForSeconds((1f / UIController.instance.fadeSpeed) + 0.2f);
-
+         
+         UIController.instance.FadeFromBlack();
        
         PlayerController.instance.gameObject.SetActive(true);
 
