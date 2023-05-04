@@ -12,6 +12,15 @@ public class CameraController : MonoBehaviour
 
     private Vector2 lastPos;
 
+    public bool StopFollow;
+
+    public static CameraController instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
     void Start()
     {
         lastPos = transform.position;
@@ -19,7 +28,10 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
-        transform.position = new Vector3(target.position.x + 2f, Mathf.Clamp(target.position.y, minHeight, maxHeight), transform.position.z);
+
+        if(!StopFollow)
+        {
+            transform.position = new Vector3(target.position.x + 2f, Mathf.Clamp(target.position.y, minHeight, maxHeight), transform.position.z);
 
         Vector2 amountToMove = new Vector2(transform.position.x - lastPos.x, transform.position.y - lastPos.y);
 
@@ -28,4 +40,6 @@ public class CameraController : MonoBehaviour
 
         lastPos = transform.position;
     }
+        }
+        
 }

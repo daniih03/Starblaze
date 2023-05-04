@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -13,12 +14,16 @@ public class LevelManager : MonoBehaviour
 
     public int gemsCollected;
 
+    public string SceneToLoad;
+
    private void Awake()
    {
     instance=this;
+    
    }
     void Start()
     {
+        
         anim = GetComponent<Animator>();
     }
 
@@ -92,6 +97,24 @@ public class LevelManager : MonoBehaviour
          UIController.instance.UpdateHealthDisplay();
 
         
+    }
+
+    public void EndLevel()
+    {
+        StartCoroutine(EndLevelCo());
+    }
+
+    public IEnumerator EndLevelCo()
+    {
+        PlayerController.instance.StopInput = true;
+        CameraController.instance.StopFollow =true;
+        yield return new WaitForSeconds(1.5f);
+
+        AudioManager.instance.MusicVolumeDown();
+
+        UIController.instance.FadeToBlack();
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene(SceneToLoad);
     }
 
 }

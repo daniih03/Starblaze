@@ -37,6 +37,8 @@ public class PlayerController : MonoBehaviour
 
     private CapsuleCollider2D theCC;
 
+    public bool StopInput;
+
 
     private void Awake()
     {
@@ -54,7 +56,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if(!PauseMenu.instance.isPaused)
+        if(!PauseMenu.instance.isPaused && !StopInput) 
         {
              if(knockbackCounter <= 0 && !anim.GetBool("Dead"))
         {

@@ -12,8 +12,11 @@ public class AudioManager : MonoBehaviour
     public AudioSource bgm, levelEndMusic;
 
     public float fadetime;
+    private bool EndLevel;
 
-    private float Fadetime;
+
+
+
    
 private void Awake()
 {
@@ -23,19 +26,36 @@ private void Awake()
 
     void Start()
     {
-        Fadetime =fadetime;
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-
+            if(EndLevel)
+            {
+                bgm.volume = Mathf.MoveTowards(bgm.volume, 0f, fadetime * Time.deltaTime);
+                if(bgm.volume <=0)
+                {
+                    bgm.Stop();
+                    bgm.volume =1;
+                    EndLevel = false;
+                    
+                }
+            }
         
     }
 
     public void PlaySFX(int soundToPlay)
     {
         soundEffects[soundToPlay].Play();
+    }
+
+    public void MusicVolumeDown()
+    {
+        
+        EndLevel=true;
+    
     }
 
 }
