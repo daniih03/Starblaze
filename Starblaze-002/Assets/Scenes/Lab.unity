@@ -539,7 +539,7 @@ GameObject:
   - component: {fileID: 709355292}
   - component: {fileID: 709355293}
   m_Layer: 0
-  m_Name: pixil-frame-0_9
+  m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

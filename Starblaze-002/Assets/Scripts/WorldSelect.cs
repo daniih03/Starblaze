@@ -18,7 +18,7 @@ GameObject temp;
     if(other.tag == "Player" )
         {
             nearPlayer =true;
-            temp = Instantiate(PopUp, new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z), Quaternion.identity);
+            temp = Instantiate(PopUp, new Vector3(transform.position.x -0.5f, transform.position.y + 1.5f, transform.position.z), Quaternion.identity);
             
             
         } 
