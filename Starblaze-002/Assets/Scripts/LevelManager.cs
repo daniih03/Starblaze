@@ -14,7 +14,11 @@ public class LevelManager : MonoBehaviour
 
     public int gemsCollected;
 
-    public string SceneToLoad;
+    public bool SafeZone;
+
+    public string nextlevel, world1, world2;
+
+    private int test, test1;
 
    private void Awake()
    {
@@ -99,12 +103,45 @@ public class LevelManager : MonoBehaviour
         
     }
 
-    public void EndLevel()
+    public void EndLevel(int num )
     {
-        StartCoroutine(EndLevelCo());
+        
+        StartCoroutine(levelSelect(num));
+
     }
 
-    public IEnumerator EndLevelCo()
+    public void FinishLevel()
+    {
+
+        StartCoroutine(nextLevel());
+    }
+
+    
+
+    public IEnumerator levelSelect(int num)
+    {
+        
+        PlayerController.instance.theRB.velocity = new Vector2(0, PlayerController.instance.theRB.velocity.y);
+        PlayerController.instance.StopInput = true;
+        CameraController.instance.StopFollow =true;
+        yield return new WaitForSeconds(1.5f);
+
+        AudioManager.instance.MusicVolumeDown();
+
+        UIController.instance.FadeToBlack();
+        yield return new WaitForSeconds(2f);
+
+        switch (num)
+        {
+            case 1 : SceneManager.LoadScene(world1);
+            break;
+            case 2 : SceneManager.LoadScene(world2);
+            break;
+        }
+
+    }
+
+     public IEnumerator nextLevel()
     {
         PlayerController.instance.StopInput = true;
         CameraController.instance.StopFollow =true;
@@ -114,8 +151,13 @@ public class LevelManager : MonoBehaviour
 
         UIController.instance.FadeToBlack();
         yield return new WaitForSeconds(2f);
-        SceneManager.LoadScene(SceneToLoad);
+        SceneManager.LoadScene(nextlevel);
+
+        
     }
+
+    
+
 
 }
 

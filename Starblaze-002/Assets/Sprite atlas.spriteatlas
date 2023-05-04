@@ -35,6 +35,7 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 1a08f9bec49c04809b03ba62a218b140, type: 3}
     - {fileID: 2800000, guid: e8eeee797a1eb41268234a175d2079ac, type: 3}
     - {fileID: 2800000, guid: b66d951e7d54f45e88bab99f63c58a70, type: 3}
+    - {fileID: 2800000, guid: e08e6a2f34edd4a7db4285eeddef84a8, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -169,6 +170,26 @@ SpriteAtlas:
   - {fileID: 21300040, guid: 1a08f9bec49c04809b03ba62a218b140, type: 3}
   - {fileID: 21300046, guid: 1a08f9bec49c04809b03ba62a218b140, type: 3}
   - {fileID: 21300044, guid: 1a08f9bec49c04809b03ba62a218b140, type: 3}
+  - {fileID: -1610437768, guid: e08e6a2f34edd4a7db4285eeddef84a8, type: 3}
+  - {fileID: 1281504313, guid: e08e6a2f34edd4a7db4285eeddef84a8, type: 3}
+  - {fileID: 1077233583, guid: e08e6a2f34edd4a7db4285eeddef84a8, type: 3}
+  - {fileID: 1433104106, guid: e08e6a2f34edd4a7db4285eeddef84a8, type: 3}
+  - {fileID: 1787814935, guid: e08e6a2f34edd4a7db4285eeddef84a8, type: 3}
+  - {fileID: -367389059, guid: e08e6a2f34edd4a7db4285eeddef84a8, type: 3}
+  - {fileID: -395019587, guid: e08e6a2f34edd4a7db4285eeddef84a8, type: 3}
+  - {fileID: 1277539647, guid: e08e6a2f34edd4a7db4285eeddef84a8, type: 3}
+  - {fileID: 1722027917, guid: e08e6a2f34edd4a7db4285eeddef84a8, type: 3}
+  - {fileID: -2111774522, guid: e08e6a2f34edd4a7db4285eeddef84a8, type: 3}
+  - {fileID: -835032594, guid: e08e6a2f34edd4a7db4285eeddef84a8, type: 3}
+  - {fileID: 673615954, guid: e08e6a2f34edd4a7db4285eeddef84a8, type: 3}
+  - {fileID: -807441671, guid: e08e6a2f34edd4a7db4285eeddef84a8, type: 3}
+  - {fileID: -1910988627, guid: e08e6a2f34edd4a7db4285eeddef84a8, type: 3}
+  - {fileID: -647054301, guid: e08e6a2f34edd4a7db4285eeddef84a8, type: 3}
+  - {fileID: -1991765313, guid: e08e6a2f34edd4a7db4285eeddef84a8, type: 3}
+  - {fileID: 2028319001, guid: e08e6a2f34edd4a7db4285eeddef84a8, type: 3}
+  - {fileID: -867158433, guid: e08e6a2f34edd4a7db4285eeddef84a8, type: 3}
+  - {fileID: -233175823, guid: e08e6a2f34edd4a7db4285eeddef84a8, type: 3}
+  - {fileID: -1258596568, guid: e08e6a2f34edd4a7db4285eeddef84a8, type: 3}
   m_PackedSpriteNamesToIndex:
   - walls-tileset-sliced_18
   - walls-tileset-sliced_19
@@ -299,6 +320,26 @@ SpriteAtlas:
   - tileset-sliced_20
   - tileset-sliced_23
   - tileset-sliced_22
+  - tileset_0
+  - tileset_1
+  - tileset_2
+  - tileset_3
+  - tileset_4
+  - tileset_5
+  - tileset_6
+  - tileset_7
+  - tileset_8
+  - tileset_9
+  - tileset_13
+  - tileset_12
+  - tileset_11
+  - tileset_10
+  - tileset_17
+  - tileset_16
+  - tileset_15
+  - tileset_14
+  - tileset_19
+  - tileset_18
   m_RenderDataMap: {}
   m_Tag: Sprite atlas
   m_IsVariant: 0

@@ -15,6 +15,12 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 4bd04b071242a4545b70c1e6e80b2e5a
   - enabled: 1
+    path: Assets/Scenes/Earth.unity
+    guid: e0449f8eff79f9f4d82b5e4f4140e511
+  - enabled: 1
+    path: Assets/Scenes/Lab.unity
+    guid: 53cf1a4c65bbdab4e9a22aa06238f132
+  - enabled: 1
     path: Assets/Scenes/Test2.unity
     guid: c015a714a83e30b43ade16f8a5f1ef9a
   - enabled: 1

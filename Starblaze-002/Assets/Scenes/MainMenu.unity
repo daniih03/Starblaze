@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   img: {fileID: 1118242693}
-  startScene: Test2
+  startScene: Earth
 --- !u!114 &134333303
 MonoBehaviour:
   m_ObjectHideFlags: 0

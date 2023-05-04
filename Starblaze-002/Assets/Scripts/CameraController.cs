@@ -40,6 +40,8 @@ public class CameraController : MonoBehaviour
 
         lastPos = transform.position;
     }
+
+    
         }
         
 }

@@ -8,6 +8,9 @@ TagManager:
   - Enemy
   - proyectile
   - Drop
+  - Limite
+  - Playable
+  - Capsule
   layers:
   - Default
   - TransparentFX

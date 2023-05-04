@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -79,7 +80,7 @@ public class PlayerController : MonoBehaviour
                 {
                     if(canDoubleJump)
                     {
-                        AudioManager.instance.PlaySFX(2);
+                        
                         theRB.velocity = new Vector2(theRB.velocity.x, jumpForce);
                         canDoubleJump = false;
                     }
@@ -115,10 +116,14 @@ public class PlayerController : MonoBehaviour
         anim.SetFloat("moveSpeed", Mathf.Abs(theRB.velocity.x));
         anim.SetBool("isGrounded", isGrounded);
 
-        if(Input.GetKeyDown(KeyCode.Space) || Input.GetButton("Fire1") && Time.time > cd + 0.75f)
+        if(Input.GetKeyDown(KeyCode.Space) || Input.GetButton("Fire1"))
         {
-            shoot();
+            if(Time.time > cd + 0.75f && !LevelManager.instance.SafeZone)
+            {
+                shoot();
             cd = Time.time;
+            }
+            
         }
 
         if(anim.GetBool("Dead"))
@@ -158,4 +163,23 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Limite"))
+        {
+            CameraController.instance.StopFollow = true;
+        } 
+
+       
+
+    }
+
+        private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Limite"))
+        {
+            CameraController.instance.StopFollow = false;
+        } 
+
+    }
 }
