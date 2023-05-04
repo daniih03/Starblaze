@@ -399,7 +399,7 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: -396657701, guid: 85278a0f15631ac40b55934ef181499a, type: 3}
-    m_PressedSprite: {fileID: 210491467, guid: 5bc8da589e0d1ab4ab82466a834fbfa4, type: 3}
+    m_PressedSprite: {fileID: -241188714, guid: 7c122e11e1d010b4585452b3de2d8325, type: 3}
     m_SelectedSprite: {fileID: 210491467, guid: 5bc8da589e0d1ab4ab82466a834fbfa4, type: 3}
     m_DisabledSprite: {fileID: -396657701, guid: 85278a0f15631ac40b55934ef181499a, type: 3}
   m_AnimationTriggers:
@@ -834,7 +834,7 @@ PrefabInstance:
     - target: {fileID: 3147312105293588880, guid: 04e6685567a4d374e8f2e068d6119819, type: 3}
       propertyPath: m_SpriteState.m_PressedSprite
       value: 
-      objectReference: {fileID: 1808160371, guid: 5bc8da589e0d1ab4ab82466a834fbfa4, type: 3}
+      objectReference: {fileID: 1132839072, guid: 7c122e11e1d010b4585452b3de2d8325, type: 3}
     - target: {fileID: 3147312105293588880, guid: 04e6685567a4d374e8f2e068d6119819, type: 3}
       propertyPath: m_SpriteState.m_DisabledSprite
       value: 
