@@ -62,6 +62,7 @@ public class EnemyController : MonoBehaviour
                 Instantiate(Collectible, transform.position, Quaternion.identity);
             }
             AudioManager.instance.PlaySFX(6);
+            CinemachineCamShake.instance.MoverCamara(1f,1f,0.5f);
             Destroy(gameObject);
         }
     }

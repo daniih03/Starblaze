@@ -146,6 +146,8 @@ public class PlayerController : MonoBehaviour
     private void shoot()
     {
         AudioManager.instance.PlaySFX(5);
+        ShootRecoil(0.2f);
+        CinemachineCamShake.instance.MoverCamara(1f,10f, 0.1f);
         Vector3 direction;
         if(!theSR.flipX)
         {
@@ -163,23 +165,17 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Limite"))
+    private void ShootRecoil(float Duration)
         {
-            CameraController.instance.StopFollow = true;
-        } 
+            if(Duration >= 0 && isGrounded)
+            {
+                 Duration -=Time.deltaTime;
+                theRB.velocity = new Vector2(theRB.velocity.x,5f);
+            }
+        }
+    
+
+    
 
        
-
-    }
-
-        private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("Limite"))
-        {
-            CameraController.instance.StopFollow = false;
-        } 
-
-    }
 }

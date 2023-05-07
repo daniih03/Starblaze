@@ -43,6 +43,9 @@ public class PlayerHealthController : MonoBehaviour
         if(invincibleCounter <= 0)
         {
             AudioManager.instance.PlaySFX(4);
+            CinemachineCamShake.instance.MoverCamara(10f,5f,0.2f);
+           
+
             currentHealth--;
             PlayerController.instance.anim.SetTrigger("hurt");
 
@@ -50,6 +53,7 @@ public class PlayerHealthController : MonoBehaviour
             {
                 currentHealth = 0;
                 invincibleCounter = 0;
+                 UIController.instance.WhiteFlash();
                 LevelManager.instance.RespawnPlayerD();
             }
             else

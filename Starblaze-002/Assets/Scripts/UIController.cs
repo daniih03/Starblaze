@@ -14,9 +14,11 @@ public class UIController : MonoBehaviour
 
     public TextMeshProUGUI gemText;
 
-    public Image FadeScreen;
+    public Image FadeScreen, Whiteflash;
+
+
     public float fadeSpeed;
-    public bool ShouldFadeToBlack, ShouldFadeFromBlack;
+    public bool ShouldFadeToBlack, ShouldFadeFromBlack, ShouldWhiteFlash;
 
     private void Awake()
     {
@@ -49,6 +51,19 @@ public class UIController : MonoBehaviour
                 ShouldFadeFromBlack = false;
             }
         } 
+        if (ShouldWhiteFlash)
+            {
+             Whiteflash.enabled = true;   
+       
+             Whiteflash.color = new Color(Whiteflash.color.r, Whiteflash.color.g, Whiteflash.color.b, Mathf.MoveTowards(Whiteflash.color.a, 0f, 8f * Time.deltaTime));
+
+             if(Whiteflash.color.a == 0f)
+             {
+               Whiteflash.enabled= false;
+               Whiteflash.color = new Color(Whiteflash.color.r, Whiteflash.color.g, Whiteflash.color.b, 1f);
+               ShouldWhiteFlash =false;
+             }
+            }
     }
 
     public void UpdateHealthDisplay()
@@ -90,5 +105,13 @@ public class UIController : MonoBehaviour
     {
         ShouldFadeToBlack = false;
         ShouldFadeFromBlack = true;
+    }
+
+    public void WhiteFlash()
+    {
+        Whiteflash.color = new Color(Whiteflash.color.r, Whiteflash.color.g, Whiteflash.color.b, 1f);     
+        ShouldWhiteFlash = true;
+            
+        
     }
 }

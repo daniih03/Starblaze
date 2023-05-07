@@ -123,7 +123,7 @@ public class LevelManager : MonoBehaviour
         
         PlayerController.instance.theRB.velocity = new Vector2(0, PlayerController.instance.theRB.velocity.y);
         PlayerController.instance.StopInput = true;
-        CameraController.instance.StopFollow =true;
+        //CameraController.instance.StopFollow =true;
         yield return new WaitForSeconds(1.5f);
 
         AudioManager.instance.MusicVolumeDown();
@@ -144,7 +144,7 @@ public class LevelManager : MonoBehaviour
      public IEnumerator nextLevel()
     {
         PlayerController.instance.StopInput = true;
-        CameraController.instance.StopFollow =true;
+        //CameraController.instance.StopFollow =true;
         yield return new WaitForSeconds(1.5f);
 
         AudioManager.instance.MusicVolumeDown();
