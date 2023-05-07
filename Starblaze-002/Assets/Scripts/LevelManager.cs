@@ -58,6 +58,8 @@ public class LevelManager : MonoBehaviour
         //PlayerController.instance.gameObject.SetActive(false);
         PlayerController.instance.Knockback();
         
+        
+
         PlayerController.instance.anim.SetBool("Dead", true);
         AudioManager.instance.PlaySFX(3);
 
@@ -68,6 +70,8 @@ public class LevelManager : MonoBehaviour
 
          UIController.instance.FadeFromBlack();
         //PlayerController.instance.gameObject.SetActive(true);
+        RespawnEnemy.instance.Respawn();
+
         PlayerController.instance.anim.SetBool("Dead", false);
 
         PlayerController.instance.transform.position = CheckpointController.instance.spawnPoint;
@@ -75,6 +79,7 @@ public class LevelManager : MonoBehaviour
         PlayerHealthController.instance.currentHealth = PlayerHealthController.instance.maxHealth;
 
          UIController.instance.UpdateHealthDisplay();
+
     }
          IEnumerator RespawnCoF()
     {
@@ -89,6 +94,8 @@ public class LevelManager : MonoBehaviour
          yield return new WaitForSeconds((1f / UIController.instance.fadeSpeed) + 0.2f);
          
          UIController.instance.FadeFromBlack();
+
+          RespawnEnemy.instance.Respawn();
        
         PlayerController.instance.gameObject.SetActive(true);
 

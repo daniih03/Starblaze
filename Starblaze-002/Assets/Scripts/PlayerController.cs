@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
     [Header("Proyectiles")]
     public GameObject Bullet;
     public GameObject ShootFX;
-    private float cd;
+    private float cd,dashcd;
 
     public float knockbackLength, knockbackForce;
     private float knockbackCounter;
@@ -39,6 +39,16 @@ public class PlayerController : MonoBehaviour
     private CapsuleCollider2D theCC;
 
     public bool StopInput;
+
+    [Header("Dash")]
+
+    public float DashSpeed;
+    public float DashTime;
+
+    private bool CanDash;
+
+
+
 
 
     private void Awake()
@@ -51,12 +61,15 @@ public class PlayerController : MonoBehaviour
         anim = GetComponent<Animator>();
         theSR = GetComponent<SpriteRenderer>();
         theCC = GetComponent<CapsuleCollider2D>();
+        CanDash = true;
 
         
     }
 
     void Update()
     {
+        
+        
         if(!PauseMenu.instance.isPaused && !StopInput) 
         {
              if(knockbackCounter <= 0 && !anim.GetBool("Dead"))
@@ -67,7 +80,7 @@ public class PlayerController : MonoBehaviour
 
             if(isGrounded)
             {
-                canDoubleJump = true;
+                
             }
 
             if(Input.GetButtonDown("Jump"))
@@ -76,16 +89,10 @@ public class PlayerController : MonoBehaviour
                 {
                     AudioManager.instance.PlaySFX(2);
                     theRB.velocity = new Vector2(theRB.velocity.x, jumpForce);
-                } else
-                {
-                    if(canDoubleJump)
-                    {
-                        
-                        theRB.velocity = new Vector2(theRB.velocity.x, jumpForce);
-                        canDoubleJump = false;
-                    }
-                }
+                } 
+                
             }
+            
 
             if(theRB.velocity.x < 0)
             {
@@ -95,6 +102,8 @@ public class PlayerController : MonoBehaviour
             {
                 theSR.flipX = false;
             }
+
+            
         }
         else if (knockbackCounter >= 0)
         {
@@ -118,7 +127,7 @@ public class PlayerController : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Space) || Input.GetButton("Fire1"))
         {
-            if(Time.time > cd + 0.75f && !LevelManager.instance.SafeZone)
+            if(Time.time > cd + 0.75f && !LevelManager.instance.SafeZone && !anim.GetBool("Dead"))
             {
                 shoot();
             cd = Time.time;
@@ -134,9 +143,38 @@ public class PlayerController : MonoBehaviour
         {
             theCC.size = new Vector2(0.6684647f, 0.9640899f);
            
-        } 
+        }
+        if(Input.GetKeyDown(KeyCode.Joystick1Button2) && CanDash && Time.time > dashcd + 1.25f && !anim.GetBool("Dead"))
+            {
+                
+                StartCoroutine(Dash());
+                dashcd = Time.time;  
+            } 
+
+        
+
     }
 
+
+    
+    private IEnumerator Dash()
+    {
+            StopInput = true;
+            CanDash = false;
+            theRB.gravityScale = 0;
+            if(theSR.flipX)
+            {
+                Debug.Log("Dash izq");
+                theRB.velocity = new Vector2(-DashSpeed, 0);
+            } else if (!theSR.flipX)
+            theRB.velocity = new Vector2(DashSpeed, 0);
+
+        yield return new WaitForSeconds(DashTime);
+
+            theRB.gravityScale = 5;
+            CanDash = true;
+            StopInput = false;
+    }
     public void Knockback()
     {
         knockbackCounter = knockbackLength;
@@ -174,8 +212,4 @@ public class PlayerController : MonoBehaviour
             }
         }
     
-
-    
-
-       
 }

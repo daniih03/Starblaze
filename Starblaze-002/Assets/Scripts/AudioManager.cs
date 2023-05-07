@@ -6,11 +6,11 @@ public class AudioManager : MonoBehaviour
 {
 
     public static AudioManager instance;
-
+[Header("SFX")]
     public AudioSource[] soundEffects;
-
+[Header("Music")]
     public AudioSource bgm, levelEndMusic;
-
+[Header("Counters")]
     public float fadetime;
     private bool EndLevel;
 

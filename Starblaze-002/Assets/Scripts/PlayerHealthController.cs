@@ -53,8 +53,9 @@ public class PlayerHealthController : MonoBehaviour
             {
                 currentHealth = 0;
                 invincibleCounter = 0;
-                 UIController.instance.WhiteFlash();
+                UIController.instance.WhiteFlash();
                 LevelManager.instance.RespawnPlayerD();
+                
             }
             else
             {
