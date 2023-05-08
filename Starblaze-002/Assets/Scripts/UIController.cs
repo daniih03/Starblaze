@@ -17,6 +17,7 @@ public class UIController : MonoBehaviour
     public Image FadeScreen, Whiteflash;
 
 
+
     public float fadeSpeed;
     public bool ShouldFadeToBlack, ShouldFadeFromBlack, ShouldWhiteFlash;
 
