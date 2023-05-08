@@ -119,21 +119,30 @@ public class PlayerController : MonoBehaviour
                 theRB.velocity = new Vector2(knockbackForce, theRB.velocity.y);
             }
         } else theRB.velocity = new Vector2(0, theRB.velocity.y);
-        }
-       
 
-        anim.SetFloat("moveSpeed", Mathf.Abs(theRB.velocity.x));
-        anim.SetBool("isGrounded", isGrounded);
+         if(Input.GetKeyDown(KeyCode.Joystick1Button2) && CanDash && Time.time > dashcd + 1.25f && !anim.GetBool("Dead"))
+            {
+                
+                StartCoroutine(Dash());
+                dashcd = Time.time;  
+            } 
 
-        if(Input.GetKeyDown(KeyCode.Space) || Input.GetButton("Fire1"))
+            if(Input.GetKeyDown(KeyCode.Space) || Input.GetButton("Fire1"))
         {
-            if(Time.time > cd + 0.75f && !LevelManager.instance.SafeZone && !anim.GetBool("Dead"))
+            if(Time.time > cd + 0.75f && !LevelManager.instance.SafeZone && !anim.GetBool("Dead") && CanDash)
             {
                 shoot();
             cd = Time.time;
             }
             
         }
+        }
+       
+
+        anim.SetFloat("moveSpeed", Mathf.Abs(theRB.velocity.x));
+        anim.SetBool("isGrounded", isGrounded);
+
+        
 
         if(anim.GetBool("Dead"))
         {
@@ -144,12 +153,7 @@ public class PlayerController : MonoBehaviour
             theCC.size = new Vector2(0.6684647f, 0.9640899f);
            
         }
-        if(Input.GetKeyDown(KeyCode.Joystick1Button2) && CanDash && Time.time > dashcd + 1.25f && !anim.GetBool("Dead"))
-            {
-                
-                StartCoroutine(Dash());
-                dashcd = Time.time;  
-            } 
+       
 
         
 
@@ -168,6 +172,8 @@ public class PlayerController : MonoBehaviour
                 theRB.velocity = new Vector2(-DashSpeed, 0);
             } else if (!theSR.flipX)
             theRB.velocity = new Vector2(DashSpeed, 0);
+            anim.SetTrigger("Dash");
+            AudioManager.instance.PlaySFX(7);
 
         yield return new WaitForSeconds(DashTime);
 

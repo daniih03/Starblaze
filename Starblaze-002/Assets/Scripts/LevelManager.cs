@@ -20,6 +20,10 @@ public class LevelManager : MonoBehaviour
 
     private int test, test1;
 
+    public GameObject HB;
+
+    private Animator HBanim;
+
    private void Awake()
    {
     instance=this;
@@ -29,6 +33,8 @@ public class LevelManager : MonoBehaviour
     {
         
         anim = GetComponent<Animator>();
+
+        HBanim = HB.GetComponent<Animator>();
         
     }
 
@@ -78,8 +84,10 @@ public class LevelManager : MonoBehaviour
         PlayerController.instance.transform.position = CheckpointController.instance.spawnPoint;
 
         PlayerHealthController.instance.currentHealth = PlayerHealthController.instance.maxHealth;
+        
+        HBanim.SetBool("IsFullHp", true);
 
-         UIController.instance.UpdateHealthDisplay();
+       //  UIController.instance.UpdateHealthDisplay();
 
     }
          IEnumerator RespawnCoF()
@@ -106,7 +114,9 @@ public class LevelManager : MonoBehaviour
 
         PlayerHealthController.instance.currentHealth = PlayerHealthController.instance.maxHealth;
 
-         UIController.instance.UpdateHealthDisplay();
+        HBanim.SetBool("IsFullHp", true);
+
+         //UIController.instance.UpdateHealthDisplay();
 
         
     }

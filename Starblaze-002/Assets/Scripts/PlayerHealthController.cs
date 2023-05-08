@@ -13,6 +13,10 @@ public class PlayerHealthController : MonoBehaviour
 
     private SpriteRenderer theSR;
 
+    public GameObject HB;
+
+    private Animator HBanim;
+
     private void Awake()
     {
         instance = this;
@@ -23,6 +27,8 @@ public class PlayerHealthController : MonoBehaviour
         currentHealth = maxHealth;
 
         theSR = GetComponent<SpriteRenderer>();
+
+       HBanim = HB.gameObject.GetComponent<Animator>();
     }
 
     void Update()
@@ -45,12 +51,14 @@ public class PlayerHealthController : MonoBehaviour
             AudioManager.instance.PlaySFX(4);
             CinemachineCamShake.instance.MoverCamara(10f,5f,0.2f);
            
-
+            HBanim.SetBool("IsFullHp", false);
+            HBanim.SetTrigger("HalfDown");
             currentHealth--;
             PlayerController.instance.anim.SetTrigger("hurt");
 
             if(currentHealth <= 0)
             {
+                HBanim.SetTrigger("Empty");
                 currentHealth = 0;
                 invincibleCounter = 0;
                 UIController.instance.WhiteFlash();
@@ -65,19 +73,21 @@ public class PlayerHealthController : MonoBehaviour
                 PlayerController.instance.Knockback();
             }
 
-            UIController.instance.UpdateHealthDisplay();
+           // UIController.instance.UpdateHealthDisplay();
         }
     }
 
 
     public void HealPlayer()
     {
+         HBanim.SetTrigger("Full");
+        
         currentHealth++;
-        if(currentHealth > maxHealth)
+        if(currentHealth >= maxHealth)
         {
             currentHealth =maxHealth;
         }
 
-        UIController.instance.UpdateHealthDisplay();
+       // UIController.instance.UpdateHealthDisplay();
     }
 }

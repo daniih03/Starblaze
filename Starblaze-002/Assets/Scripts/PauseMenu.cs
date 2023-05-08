@@ -14,6 +14,9 @@ public class PauseMenu : MonoBehaviour
 
     public static PauseMenu instance;
 
+    public GameObject optionsmenu;
+    public GameObject pausemenu;
+
 
     
     // Start is called before the first frame update
@@ -25,12 +28,19 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        
-        if(Input.GetKeyDown(KeyCode.Joystick1Button9) || Input.GetKeyDown(KeyCode.Escape))
+        if(!optionsmenu.activeInHierarchy)
         {
-            PauseUnpause();
+            if(Input.GetKeyDown(KeyCode.Joystick1Button9) || Input.GetKeyDown(KeyCode.Escape))
+        {
+           
+            
+                PauseUnpause();
+            
+            
         }
+        }
+        
+        
     }
 
     public void PauseUnpause()
@@ -39,6 +49,7 @@ public class PauseMenu : MonoBehaviour
         {
             isPaused = false;
             pauseScreen.SetActive(false);
+            optionsmenu.SetActive(false);
             
             Time.timeScale = 1f;
 

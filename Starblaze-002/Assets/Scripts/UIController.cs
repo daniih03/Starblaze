@@ -8,9 +8,9 @@ public class UIController : MonoBehaviour
 {
     public static UIController instance;
 
-    public Image HealthBar1, HealthBar2;
+    //public Image HealthBar1, HealthBar2;
 
-    public Sprite fullBar, emptyBar;
+    //public Sprite fullBar, emptyBar;
 
     public TextMeshProUGUI gemText;
 
@@ -20,6 +20,8 @@ public class UIController : MonoBehaviour
 
     public float fadeSpeed;
     public bool ShouldFadeToBlack, ShouldFadeFromBlack, ShouldWhiteFlash;
+
+    public GameObject PausePanel, MainPanel;
 
     private void Awake()
     {
@@ -67,29 +69,7 @@ public class UIController : MonoBehaviour
             }
     }
 
-    public void UpdateHealthDisplay()
-    {
-        
-        switch(PlayerHealthController.instance.currentHealth)
-        {
-            case 2:
-                HealthBar1.sprite = fullBar;
-                HealthBar2.sprite = fullBar;
-                break;
-            case 1:
-                HealthBar1.sprite = fullBar;
-                HealthBar2.sprite = emptyBar;
-                break;
-            case 0:
-                HealthBar1.sprite = emptyBar;
-                HealthBar2.sprite = emptyBar;
-                break;
-            default:
-                HealthBar1.sprite = emptyBar;
-                HealthBar2.sprite = emptyBar;
-                break;
-        }
-    }
+    
 
     public void UpdateGemCount()
     

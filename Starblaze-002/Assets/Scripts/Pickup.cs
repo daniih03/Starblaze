@@ -9,6 +9,10 @@ public class Pickup : MonoBehaviour
     private bool isCollected;
 
     public GameObject collectible;
+
+   
+
+    
   
   private void OnTriggerEnter2D(Collider2D other)
   {
@@ -33,7 +37,7 @@ public class Pickup : MonoBehaviour
             PlayerHealthController.instance.HealPlayer();
 
             Instantiate(collectible, transform.position, transform.rotation);
-            
+         
             isCollected=true;
             Destroy(gameObject);
           }

@@ -23,8 +23,18 @@ public class OptionsMenu : MonoBehaviour
     VolumeMusic.onValueChanged.AddListener(ChangeVolumeMusic);
  }
 
+
+ private void update()
+ {
+   if (PauseMenu.instance.isPaused)
+   {
+      Unpause();
+   }
+ }
+
  public void openpanel(GameObject panel)
  {
+   
     mainpanel.SetActive(false);
     optionspanel.SetActive(false);
 
@@ -40,4 +50,11 @@ public class OptionsMenu : MonoBehaviour
  {
     mixer.SetFloat("volFx", v);
  }
+
+public void Unpause()
+{
+   mainpanel.SetActive(false);
+   optionspanel.SetActive(false);
+}
+
 }
