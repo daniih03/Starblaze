@@ -30,16 +30,16 @@ public Image RocketlauncherText, BootsText, ShieldText, InvincibleText, RifleTex
 
        } else if(EventSystem.current.currentSelectedGameObject == Boots)
        {
-         ShieldText.enabled = false;
+             ShieldText.enabled = false;
             RifleText.enabled = false;
             InvincibleText.enabled = false;
             RocketlauncherText.enabled = false;
          BootsText.enabled = true;
        } else if(EventSystem.current.currentSelectedGameObject == Shield)
        {
-        RifleText.enabled = false;
-            InvincibleText.enabled = false;
-            RocketlauncherText.enabled = false;
+         RifleText.enabled = false;
+         InvincibleText.enabled = false;
+         RocketlauncherText.enabled = false;
          BootsText.enabled = false;
          ShieldText.enabled = true;
        }else if(EventSystem.current.currentSelectedGameObject == Invincible)
@@ -56,7 +56,15 @@ public Image RocketlauncherText, BootsText, ShieldText, InvincibleText, RifleTex
          ShieldText.enabled = false;
          InvincibleText.enabled = false;
          RifleText.enabled = true;
+       } else 
+       {
+         RocketlauncherText.enabled = false;
+         BootsText.enabled = false;
+         ShieldText.enabled = false;
+         InvincibleText.enabled = false;
+         RifleText.enabled = false;
        }
+
        
     }
 
