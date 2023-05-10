@@ -153,7 +153,7 @@ MonoBehaviour:
   knockbackForce: 7.5
   Heal: {fileID: 8660501039356802521, guid: 0abeac564e67962419685cf2e5be0a7f, type: 3}
   StopInput: 0
-  DashSpeed: 20
+  DashSpeed: 30
   DashTime: 0.1
 --- !u!95 &4879100398653112172
 Animator:
@@ -191,6 +191,7 @@ MonoBehaviour:
   maxHealth: 2
   invincibleLength: 0.5
   invincibleCounter: 0
+  HB: {fileID: 0}
 --- !u!1 &4879100399200451029
 GameObject:
   m_ObjectHideFlags: 0

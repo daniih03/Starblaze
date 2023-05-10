@@ -22413,7 +22413,7 @@ MonoBehaviour:
   m_ScrollWheelAction: {fileID: 6240969308177333660, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
   m_TrackedDevicePositionAction: {fileID: 6564999863303420839, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
   m_TrackedDeviceOrientationAction: {fileID: 7970375526676320489, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_DeselectOnBackgroundClick: 1
+  m_DeselectOnBackgroundClick: 0
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
 --- !u!222 &1548969974511664185
@@ -22919,10 +22919,22 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 4723049679791044654}
         m_TargetAssemblyTypeName: OptionsMenu, Assembly-CSharp
-        m_MethodName: openpanel
+        m_MethodName: AbrirPanel
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 8834121706964986327}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4723049679791044654}
+        m_TargetAssemblyTypeName: OptionsMenu, Assembly-CSharp
+        m_MethodName: EventSystemUpdate
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 5851413193204909540}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -23030,10 +23042,22 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 4723049679791044654}
         m_TargetAssemblyTypeName: OptionsMenu, Assembly-CSharp
-        m_MethodName: openpanel
+        m_MethodName: AbrirPanel
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1548969975056408349}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4723049679791044654}
+        m_TargetAssemblyTypeName: OptionsMenu, Assembly-CSharp
+        m_MethodName: EventSystemUpdate
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 3342226240308010105}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0

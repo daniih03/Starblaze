@@ -29,4 +29,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Final.unity
     guid: efb4a4893a9727a41bf2e468cfa71818
+  - enabled: 1
+    path: Assets/Scenes/TeleTienda.unity
+    guid: 7c212717321f5004a81642e000b5b7c4
+  - enabled: 1
+    path: Assets/Scenes/TiendaTienda.unity
+    guid: 61f5a9eead4dd0e4380cf09e0e414677
   m_configObjects: {}

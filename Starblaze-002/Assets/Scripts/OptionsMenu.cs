@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
+using UnityEngine.EventSystems;
 
 public class OptionsMenu : MonoBehaviour
 {
@@ -32,13 +33,14 @@ public class OptionsMenu : MonoBehaviour
    }
  }
 
- public void openpanel(GameObject panel)
+ public void AbrirPanel(GameObject panel)
  {
    
     mainpanel.SetActive(false);
     optionspanel.SetActive(false);
 
     panel.SetActive(true);
+    
  }
 
  public void ChangeVolumeMusic(float v)
@@ -55,6 +57,12 @@ public void Unpause()
 {
    mainpanel.SetActive(false);
    optionspanel.SetActive(false);
+}
+
+public void EventSystemUpdate(GameObject firstSelected)
+{
+   EventSystem.current.SetSelectedGameObject(null);
+   EventSystem.current.SetSelectedGameObject(firstSelected);
 }
 
 }

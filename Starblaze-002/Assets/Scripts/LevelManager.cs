@@ -16,7 +16,7 @@ public class LevelManager : MonoBehaviour
 
     public bool SafeZone;
 
-    public string nextlevel, world1, world2;
+    public string nextlevel, world1, world2, ShopScene;
 
     private int test, test1;
 
@@ -134,6 +134,12 @@ public class LevelManager : MonoBehaviour
         StartCoroutine(nextLevel());
     }
 
+    public void ShopEnter()
+    {
+        StartCoroutine(ShopRock());
+
+        
+    }
     
 
     public IEnumerator levelSelect(int num)
@@ -174,6 +180,21 @@ public class LevelManager : MonoBehaviour
         
     }
 
+    public IEnumerator ShopRock()
+    {
+        PlayerController.instance.theRB.velocity = new Vector2(0, PlayerController.instance.theRB.velocity.y);
+        PlayerController.instance.StopInput = true;
+        //CameraController.instance.StopFollow =true;
+        yield return new WaitForSeconds(1.5f);
+
+        AudioManager.instance.MusicVolumeDown();
+
+        UIController.instance.FadeToBlack();
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene(ShopScene);
+
+        
+    }
     
 
 
